@@ -50,6 +50,36 @@ const resolvers = {
       db.reviews.push(game);
       return review;
     },
+
+    addGame: (_, args) => {
+      db.games = db.games.map((g) => {
+        if (g.id === args.id) {
+          return { ...g, ...args.edits };
+        }
+        return g;
+      });
+      return db.games.find((g) => g.id === args.id);
+    },
+
+    addAuthor: (_, args) => {
+      db.authors = db.authors.map((g) => {
+        if (a.id === args.id) {
+          return { ...a, ...args.edits };
+        }
+        return a;
+      });
+      return db.authors.find((a) => a.id === args.id);
+    },
+
+    addReview: (_, args) => {
+      db.reviews = db.reviews.map((r) => {
+        if (r.id === args.id) {
+          return { ...r, ...args.edits };
+        }
+        return r;
+      });
+      return db.reviews.find((r) => r.id === args.id);
+    },
   },
 };
 //server setup
